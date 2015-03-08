@@ -1,0 +1,32 @@
+﻿@model MVCSoftware.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+
+<div class="ng-scope" ng-app="myApp">
+    <form class="form-horizontal">
+        <div class="form-group has-warning has-feedback">
+            <label class="col-xs-2 control-label" for="inputWarning">Password</label>
+            <div class="col-xs-10">
+                <input type="password" id="inputWarning" class="form-control" placeholder="Input with warning">
+                <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+                <span class="help-block">Password strength: Weak</span>
+            </div>
+        </div>
+        <div class="form-group has-error has-feedback">
+            <label class="col-xs-2 control-label" for="inputError">Email</label>
+            <div class="col-xs-10">
+                <input type="email" id="inputError" class="form-control" placeholder="Input with error">
+                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                <span class="help-block">Please enter a valid email address</span>
+            </div>
+        </div>
+        <input type="submit" value="Sign up" ng-disabled="form.$invalid" class="btn btn-primary" disabled="disabled">
+    </form>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
