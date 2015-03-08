@@ -4,29 +4,30 @@
     ViewBag.Title = "Log in";
 }
 
+<h1>Login</h1>
+<div class="ng-scope" ng-app="myApp" ng-controller="LoginController">
+    <form name="form"  class="form-horizontal"  novalidate>
 
-<div class="ng-scope" ng-app="myApp">
-    <form class="form-horizontal">
-        <div class="form-group has-warning has-feedback">
-            <label class="col-xs-2 control-label" for="inputWarning">Password</label>
+        <div class="form-group">
+            <label for="email" class="col-xs-2 control-label">Email</label>
             <div class="col-xs-10">
-                <input type="password" id="inputWarning" class="form-control" placeholder="Input with warning">
-                <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
-                <span class="help-block">Password strength: Weak</span>
+                <input type="email" ng-model="email" name="email" id="email" placeholder="Email" required class="form-control">
+                <span ng-show="form.email.$dirty && form.email.$error.email" class="help-block">Email is invalid</span>
             </div>
         </div>
-        <div class="form-group has-error has-feedback">
-            <label class="col-xs-2 control-label" for="inputError">Email</label>
+        <div class="form-group">
+            <label for="password" class="col-xs-2 control-label">Password</label>
             <div class="col-xs-10">
-                <input type="email" id="inputError" class="form-control" placeholder="Input with error">
-                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-                <span class="help-block">Please enter a valid email address</span>
+                <input type="password" name="password" id="password" placeholder="Password" ng-model="password" required class="form-control">
+                <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Please enter a password</span>
             </div>
         </div>
-        <input type="submit" value="Sign up" ng-disabled="form.$invalid" class="btn btn-primary" disabled="disabled">
+
+        <input type="submit" value="Sign up" ng-click="Login()" ng-disabled="form.$invalid" class="btn btn-primary">
     </form>
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/AngularJs/Login.js")
 }
