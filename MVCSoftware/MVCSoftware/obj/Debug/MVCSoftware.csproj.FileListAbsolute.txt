@@ -47,3 +47,5 @@ E:\Collage\CollageSoftware\MVCSoftware\MVCSoftware\bin\DotNetOpenAuth.OpenId.Rel
 E:\Collage\CollageSoftware\MVCSoftware\MVCSoftware\obj\Debug\MVCSoftware.dll
 E:\Collage\CollageSoftware\MVCSoftware\MVCSoftware\obj\Debug\MVCSoftware.pdb
 E:\Collage\CollageSoftware\MVCSoftware\MVCSoftware\obj\Debug\MVCSoftware.csprojResolveAssemblyReference.cache
+E:\Collage\CollageSoftware\MVCSoftware\MVCSoftware\bin\DatabaseEntity.dll
+E:\Collage\CollageSoftware\MVCSoftware\MVCSoftware\bin\DatabaseEntity.pdb

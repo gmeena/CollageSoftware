@@ -18,16 +18,19 @@
         <div class="form-group">
             <label for="password" class="col-xs-2 control-label">Password</label>
             <div class="col-xs-10">
-                <input type="password" name="password" id="password" placeholder="Password" ng-model="password" required class="form-control">
+                <input type="password" name="password" id="password" placeholder="Password"  ng-model="password" required class="form-control">
                 <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Please enter a password</span>
             </div>
         </div>
-
-        <input type="submit" value="Sign up" ng-click="Login()" ng-disabled="form.$invalid" class="btn btn-primary">
+        <input type="submit" value="Login" ng-click='LoginSubmit()' ng-disabled="form.$invalid" class="btn btn-primary">
     </form>
 </div>
-
+<div class="clearfix"></div>
+<br />
+<div class="alert alert-danger hidden" role="alert" id="divError">Email or password is wrong</div>
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    @*@Scripts.Render("~/bundles/jqueryval")*@
     @Scripts.Render("~/AngularJs/Login.js")
 }
+
+

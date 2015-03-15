@@ -10,6 +10,10 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using MVCSoftware.Filters;
 using MVCSoftware.Models;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using DatabaseEntity.Account;
 
 namespace MVCSoftware.Controllers
 {
@@ -29,20 +33,26 @@ namespace MVCSoftware.Controllers
 
         //
         // POST: /Account/Login
-
-        [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginModel model, string returnUrl)
+        public async Task<bool> LoginSubmit(string email, string password)
         {
-            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            bool result = false;
+            using (var client = new HttpClient())
             {
-                return RedirectToLocal(returnUrl);
+                client.BaseAddress = new Uri("http://localhost:52805/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                UserLogin userlogin = new UserLogin();
+                userlogin.Email = email;
+                userlogin.Password = password;
+                // New code:
+                HttpResponseMessage response = await client.PostAsJsonAsync("api/Account/Userlogin",userlogin);
+                if (response.IsSuccessStatusCode)
+                {
+                    result = await response.Content.ReadAsAsync<bool>();
+                }
             }
-
-            // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "The user name or password provided is incorrect.");
-            return View(model);
+            return result;
         }
 
         //
@@ -124,16 +134,10 @@ namespace MVCSoftware.Controllers
 
         //
         // GET: /Account/Manage
-
-        public ActionResult Manage(ManageMessageId? message)
+        [AllowAnonymous]
+        public ActionResult Manage()
         {
-            ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-                : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
-                : "";
-            ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
-            ViewBag.ReturnUrl = Url.Action("Manage");
+
             return View();
         }
 

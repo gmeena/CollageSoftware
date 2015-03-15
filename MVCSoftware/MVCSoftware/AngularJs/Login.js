@@ -1,9 +1,28 @@
 ﻿
 var app = angular.module('myApp', []);
 
-app.controller('LoginController', function ($scope) {
-    
-    $scope.Login = function () {
-        
+app.controller('LoginController', ['$scope','$http', function ($scope,$http) {
+
+    $scope.LoginSubmit = function () {
+
+        //$scope.sayHello = function () {
+        //    $scope.greeting = 'Hello ' + $scope.email + '!';
+        //};
+
+        $http({
+            method: 'POST',
+            async: true,
+            url: '/Account/LoginSubmit',
+            data: { email: $scope.email, password: $scope.password }
+        })
+            .success(function (data) {
+                if (!$("#divError").hasClass("hidden")) {
+                    $("#divError").addClass("hidden");
+                }
+                window.location = "/Account/Manage";
+            })
+            .error(function () {
+                $("#divError").removeClass("hidden");
+            });
     }
-});
+}]);
