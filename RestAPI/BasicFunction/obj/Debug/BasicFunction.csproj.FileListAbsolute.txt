@@ -1,0 +1,5 @@
+E:\Collage\CollageSoftware\RestAPI\BasicFunction\bin\Debug\BasicFunction.dll
+E:\Collage\CollageSoftware\RestAPI\BasicFunction\bin\Debug\BasicFunction.pdb
+E:\Collage\CollageSoftware\RestAPI\BasicFunction\obj\Debug\BasicFunction.csprojResolveAssemblyReference.cache
+E:\Collage\CollageSoftware\RestAPI\BasicFunction\obj\Debug\BasicFunction.dll
+E:\Collage\CollageSoftware\RestAPI\BasicFunction\obj\Debug\BasicFunction.pdb
