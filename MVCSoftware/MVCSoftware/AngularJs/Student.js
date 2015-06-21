@@ -1,12 +1,112 @@
 ﻿
 
 
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['ngTable', 'ngResource', 'ngMockE2E']).
+                run(function ($httpBackend, $filter, $log, NgTableParams) {
+                    // emulation of api server
+                    $httpBackend.whenGET(/data.*/).respond(function (method, url, data, headers) {
+                        var query = url.split('?')[1],
+                            requestParams = {};
 
-app.controller('LoginController', ['$scope', '$http', function ($scope, $http) {
+                        $log.log('Ajax request: ', url);
+
+                        var vars = query.split('&');
+                        for (var i = 0; i < vars.length; i++) {
+                            var pair = vars[i].split('=');
+                            requestParams[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+                        }
+                        // parse url params
+                        for (var key in requestParams) {
+                            if (key.indexOf('[') >= 0) {
+                                var params = key.split(/\[(.*)\]/), value = requestParams[key], lastKey = '';
+
+                                angular.forEach(params.reverse(), function (name) {
+                                    if (name != '') {
+                                        var v = value;
+                                        value = {};
+                                        value[lastKey = name] = isNumber(v) ? parseFloat(v) : v;
+                                    }
+                                });
+                                requestParams[lastKey] = angular.extend(requestParams[lastKey] || {}, value[lastKey]);
+                            } else {
+                                requestParams[key] = isNumber(requestParams[key]) ? parseFloat(requestParams[key]) : requestParams[key];
+                            }
+                        }
+
+                        data = [{ name: "Moroni", age: 50 },
+                            { name: "Tiancum", age: 43 },
+                            { name: "Jacob", age: 27 },
+                            { name: "Nephi", age: 29 },
+                            { name: "Enos", age: 34 },
+                            { name: "Tiancum", age: 43 },
+                            { name: "Jacob", age: 27 },
+                            { name: "Nephi", age: 29 },
+                            { name: "Enos", age: 32 },
+                            { name: "Tiancum", age: 43 },
+                            { name: "Jacob", age: 27 },
+                            { name: "Nephi", age: 29 },
+                            { name: "Enos S.", age: 65 },
+                            { name: "Tiancum", age: 43 },
+                            { name: "Jacob", age: 27 },
+                            { name: "Nephi", age: 29 },
+                            { name: "Enos", age: 76 }];
+
+                        var params = new NgTableParams(requestParams);
+                        data = params.filter() ? $filter('filter')(data, params.filter()) : data;
+                        data = params.sorting() ? $filter('orderBy')(data, params.orderBy()) : data;
+
+                        var total = data.length;
+                        data = data.slice((params.page() - 1) * params.count(), params.page() * params.count());
+
+                        return [200, {
+                            result: data,
+                            total: total
+                        }];
+                    });
+                    $httpBackend.whenGET(/.*/).passThrough();
+                })
+    .directive('loadingContainer', function () {
+        return {
+            restrict: 'A',
+            scope: false,
+            link: function (scope, element, attrs) {
+                var loadingLayer = angular.element('<div class="loading"></div>');
+                element.append(loadingLayer);
+                element.addClass('loading-container');
+                scope.$watch(attrs.loadingContainer, function (value) {
+                    loadingLayer.toggleClass('ng-hide', !value);
+                });
+            }
+        };
+    })
+    .controller('StudentController', ['$scope', '$http', '$resource', 'NgTableParams', '$filter', '$timeout', function ($scope, $http, $resource, NgTableParams, $filter, $timeout) {
+
+        var Api = $resource('/data');
+
+        $scope.tableParams = new NgTableParams({
+            page: 1,            // show first page
+            count: 5,          // count per page
+            sorting: {
+                name: 'asc'     // initial sorting
+            }
+        }, {
+            counts: [5, 10, 15],
+            paginationMaxBlocks: 9,
+            total: 0,           // length of data
+            getData: function ($defer, params) {
+                // ajax request to api
+                Api.get(params.url(), function (data) {
+                    $timeout(function () {
+                        // update table params
+                        params.total(data.total);
+                        // set new data
+                        $defer.resolve(data.result);
+                    }, 500);
+                });
+            }
+        });
 
     $scope.LoginSubmit = function () {
-
         $http({
             method: 'POST',
             async: true,
@@ -30,3 +130,7 @@ $('#myTabs a').click(function (e) {
     e.preventDefault()
     $(this).tab('show')
 })
+
+function isNumber(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}

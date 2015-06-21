@@ -11,7 +11,10 @@ namespace MVCSoftware
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/angular.js",
-                        "~/Scripts/bootstrap.js"));
+                        "~/Scripts/bootstrap.js",
+                        "~/Scripts/ng-table.js",
+                        "~/Scripts/angular-resource.js",
+                        "~/Scripts/angular-mocks.js"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
@@ -28,7 +31,8 @@ namespace MVCSoftware
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css",
                 "~/Content/bootstrap.css",
-                "~/Content/jumbotron-narrow.css"));
+                "~/Content/jumbotron-narrow.css",
+                    "~/Content/ng-table.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
