@@ -1,7 +1,9 @@
 ﻿
+
+
 var app = angular.module('myApp', []);
 
-app.controller('LoginController', ['$scope','$http', function ($scope,$http) {
+app.controller('LoginController', ['$scope', '$http', function ($scope, $http) {
 
     $scope.LoginSubmit = function () {
 
@@ -22,3 +24,9 @@ app.controller('LoginController', ['$scope','$http', function ($scope,$http) {
             });
     }
 }]);
+
+
+$('#myTabs a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+})

@@ -166,6 +166,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Student\Controllers\StudentInfoController.cs" />
+    <Compile Include="Areas\Student\StudentAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -177,6 +179,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AngularJs\Login.js" />
+    <Content Include="AngularJs\Student.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -279,6 +282,13 @@
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Areas\Student\Views\Web.config" />
+    <Content Include="Areas\Student\Views\StudentInfo\Index.cshtml" />
+    <Content Include="Areas\Student\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Student\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Student\Views\StudentInfo\_StudentDetail.cshtml" />
+    <Content Include="Areas\Student\Views\StudentInfo\_StudentAddress.cshtml" />
+    <Content Include="Areas\Student\Views\StudentInfo\_StudentFamily.cshtml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1084,6 +1094,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Student\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

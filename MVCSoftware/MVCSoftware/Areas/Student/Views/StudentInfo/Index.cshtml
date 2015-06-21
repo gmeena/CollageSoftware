@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="bs-example">
+
+    <div class="ng-scope" ng-app="myApp" ng-controller="LoginController">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" id="myTabs" role="tablist">
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Student Detail</a></li>
+            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Student Address</a></li>
+            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Student Family</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">
+                <div style="margin-top: 20px;" >
+                    @Html.Partial("_StudentDetail")
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="profile">
+                <div style="margin-top: 20px;">@Html.Partial("_StudentAddress")
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="messages">
+                <div style="margin-top: 20px;">@Html.Partial("_StudentFamily")
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    @Scripts.Render("~/AngularJs/Student.js")
+}
