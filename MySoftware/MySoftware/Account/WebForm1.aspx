@@ -22,6 +22,10 @@
                 <ContentTemplate>Family Details</ContentTemplate>
             </ajaxToolkit:TabPanel>
         </ajaxToolkit:TabContainer>
+
+         <a href="StudentInfo.aspx">
+                 Student Details
+                    </a>
     </div>
     </form>
 </body>

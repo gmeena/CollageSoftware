@@ -11,7 +11,7 @@ namespace MySoftware.Account
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Tabs.ActiveTabIndex = 0;
+            
         }
     }
 }

@@ -38,8 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AjaxControlToolkit">
-      <HintPath>C:\Users\Girish\Downloads\AjaxControlToolkit.Binary.NET45\AjaxControlToolkit.dll</HintPath>
+    <Reference Include="AjaxControlToolkit, Version=4.5.7.1213, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -67,9 +68,6 @@
     </Reference>
     <Reference Include="AspNet.ScriptManager.jQuery.UI.Combined">
       <HintPath>..\packages\AspNet.ScriptManager.jQuery.UI.Combined.1.8.20\lib\net45\AspNet.ScriptManager.jQuery.UI.Combined.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ScriptManager.MSAjax, Version=4.5.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.MSAjax.4.5.6\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ScriptManager.WebForms, Version=4.5.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.AspNet.ScriptManager.WebForms.4.5.6\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
@@ -125,18 +123,123 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Account\AttendanceControl\AttendanceInfo.ascx" />
+    <Content Include="Account\AttendanceInfo.aspx" />
+    <Content Include="Account\ChangePassword.aspx" />
+    <Content Include="Account\EmployeeInfo.aspx" />
+    <Content Include="Account\EmployeeControl\EmployeeAddress.ascx" />
+    <Content Include="Account\EmployeeControl\EmployeeFamily.ascx" />
+    <Content Include="Account\EmployeeControl\EmployeeInfo.ascx" />
+    <Content Include="Account\FeeControl\FeeInfo.ascx" />
+    <Content Include="Account\FeeControl\StudentDetail.asmx" />
+    <Content Include="Account\FeesInfo.aspx" />
+    <Content Include="Account\LibraryControl\BookIssuanceForm.ascx" />
+    <Content Include="Account\LibraryControl\LibraryInfo.ascx" />
+    <Content Include="Account\LibraryInfo.aspx" />
+    <Content Include="Account\StudentControl\StudentAddress.ascx" />
+    <Content Include="Account\StudentControl\StudentFamily.ascx" />
+    <Content Include="Account\StudentControl\StudentInfo.ascx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Manage.aspx" />
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Account\StudentDetail.asmx" />
     <Content Include="Account\StudentInfo.aspx" />
+    <Content Include="Account\TeacherControl\TeacherAddress.ascx" />
+    <Content Include="Account\TeacherControl\TeacherFamily.ascx" />
+    <Content Include="Account\TeacherControl\TeacherInfo.ascx" />
+    <Content Include="Account\TeacherInfo.aspx" />
     <Content Include="Account\WebForm1.aspx" />
     <Content Include="App_Data\aspnet-MySoftware-20150301222611.mdf" />
     <Content Include="App_Data\aspnet-MySoftware-20150301222611_log.ldf">
       <DependentUpon>aspnet-MySoftware-20150301222611.mdf</DependentUpon>
     </Content>
+    <Content Include="bin\AjaxControlToolkit.dll" />
+    <Content Include="bin\AjaxControlToolkit.pdb" />
+    <Content Include="bin\AjaxMin.dll" />
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\ar\AjaxControlToolkit.resources.dll" />
+    <Content Include="bin\AspNet.ScriptManager.jQuery.dll" />
+    <Content Include="bin\AspNet.ScriptManager.jQuery.UI.Combined.dll" />
+    <Content Include="bin\cs\AjaxControlToolkit.resources.dll" />
+    <Content Include="bin\de\AjaxControlToolkit.resources.dll" />
+    <Content Include="bin\de\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\de\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\de\System.Spatial.resources.dll" />
+    <Content Include="bin\DotNetOpenAuth.AspNet.dll" />
+    <Content Include="bin\DotNetOpenAuth.AspNet.xml" />
+    <Content Include="bin\DotNetOpenAuth.Core.dll" />
+    <Content Include="bin\DotNetOpenAuth.Core.xml" />
+    <Content Include="bin\DotNetOpenAuth.OAuth.Consumer.dll" />
+    <Content Include="bin\DotNetOpenAuth.OAuth.Consumer.xml" />
+    <Content Include="bin\DotNetOpenAuth.OAuth.dll" />
+    <Content Include="bin\DotNetOpenAuth.OAuth.xml" />
+    <Content Include="bin\DotNetOpenAuth.OpenId.dll" />
+    <Content Include="bin\DotNetOpenAuth.OpenId.RelyingParty.dll" />
+    <Content Include="bin\DotNetOpenAuth.OpenId.RelyingParty.xml" />
+    <Content Include="bin\DotNetOpenAuth.OpenId.xml" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.xml" />
+    <Content Include="bin\es\AjaxControlToolkit.resources.dll" />
+    <Content Include="bin\es\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\es\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\es\System.Spatial.resources.dll" />
+    <Content Include="bin\fr\AjaxControlToolkit.resources.dll" />
+    <Content Include="bin\fr\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\fr\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\fr\System.Spatial.resources.dll" />
+    <Content Include="bin\he\AjaxControlToolkit.resources.dll" />
+    <Content Include="bin\hi\AjaxControlToolkit.resources.dll" />
+    <Content Include="bin\HtmlAgilityPack.dll" />
+    <Content Include="bin\it\AjaxControlToolkit.resources.dll" />
+    <Content Include="bin\it\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\it\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\it\System.Spatial.resources.dll" />
+    <Content Include="bin\ja\AjaxControlToolkit.resources.dll" />
+    <Content Include="bin\ja\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\ja\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\ja\System.Spatial.resources.dll" />
+    <Content Include="bin\ko\AjaxControlToolkit.resources.dll" />
+    <Content Include="bin\ko\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\ko\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\ko\System.Spatial.resources.dll" />
+    <Content Include="bin\Microsoft.AspNet.Membership.OpenAuth.dll" />
+    <Content Include="bin\Microsoft.AspNet.Web.Optimization.WebForms.dll" />
+    <Content Include="bin\Microsoft.Data.Edm.dll" />
+    <Content Include="bin\Microsoft.Data.Edm.xml" />
+    <Content Include="bin\Microsoft.Data.OData.dll" />
+    <Content Include="bin\Microsoft.Data.OData.xml" />
+    <Content Include="bin\Microsoft.ScriptManager.MSAjax.dll" />
+    <Content Include="bin\Microsoft.ScriptManager.WebForms.dll" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Microsoft.WindowsAzure.Storage.dll" />
+    <Content Include="bin\Microsoft.WindowsAzure.Storage.xml" />
+    <Content Include="bin\MySoftware.dll" />
+    <Content Include="bin\MySoftware.pdb" />
+    <Content Include="bin\nl\AjaxControlToolkit.resources.dll" />
+    <Content Include="bin\pl\AjaxControlToolkit.resources.dll" />
+    <Content Include="bin\pt\AjaxControlToolkit.resources.dll" />
+    <Content Include="bin\ru\AjaxControlToolkit.resources.dll" />
+    <Content Include="bin\ru\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\ru\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\ru\System.Spatial.resources.dll" />
+    <Content Include="bin\System.Spatial.dll" />
+    <Content Include="bin\System.Spatial.xml" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Providers.dll" />
+    <Content Include="bin\tr-TR\AjaxControlToolkit.resources.dll" />
+    <Content Include="bin\WebGrease.dll" />
+    <Content Include="bin\zh-CHS\AjaxControlToolkit.resources.dll" />
+    <Content Include="bin\zh-CHT\AjaxControlToolkit.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Spatial.resources.dll" />
+    <Content Include="bin\zh-Hant\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\zh-Hant\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\zh-Hant\System.Spatial.resources.dll" />
     <Content Include="Contact.aspx" />
+    <Content Include="Content\MySheet.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -209,33 +312,13 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="App_Data\Mydatabase" />
+    <Content Include="Account\AdminMaster.Master" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Scripts\WebForms\DetailsView.js" />
-    <Content Include="Scripts\WebForms\Focus.js" />
-    <Content Include="Scripts\WebForms\GridView.js" />
-    <Content Include="Scripts\WebForms\Menu.js" />
-    <Content Include="Scripts\WebForms\MenuStandards.js" />
-    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
-    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
-    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
-    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
-    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
-    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
-    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
-    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
-    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
-    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
-    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
-    <Content Include="Scripts\WebForms\SmartNav.js" />
-    <Content Include="Scripts\WebForms\TreeView.js" />
-    <Content Include="Scripts\WebForms\WebForms.js" />
-    <Content Include="Scripts\WebForms\WebParts.js" />
-    <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
@@ -244,12 +327,160 @@
     <Content Include="Bundle.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\AdminMaster.Master.cs">
+      <DependentUpon>AdminMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\AdminMaster.Master.designer.cs">
+      <DependentUpon>AdminMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Account\AttendanceControl\AttendanceInfo.ascx.cs">
+      <DependentUpon>AttendanceInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\AttendanceControl\AttendanceInfo.ascx.designer.cs">
+      <DependentUpon>AttendanceInfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\AttendanceInfo.aspx.cs">
+      <DependentUpon>AttendanceInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\AttendanceInfo.aspx.designer.cs">
+      <DependentUpon>AttendanceInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\EmployeeInfo.aspx.cs">
+      <DependentUpon>EmployeeInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\EmployeeInfo.aspx.designer.cs">
+      <DependentUpon>EmployeeInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\EmployeeControl\EmployeeAddress.ascx.cs">
+      <DependentUpon>EmployeeAddress.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\EmployeeControl\EmployeeAddress.ascx.designer.cs">
+      <DependentUpon>EmployeeAddress.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\EmployeeControl\EmployeeFamily.ascx.cs">
+      <DependentUpon>EmployeeFamily.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\EmployeeControl\EmployeeFamily.ascx.designer.cs">
+      <DependentUpon>EmployeeFamily.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\EmployeeControl\EmployeeInfo.ascx.cs">
+      <DependentUpon>EmployeeInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\EmployeeControl\EmployeeInfo.ascx.designer.cs">
+      <DependentUpon>EmployeeInfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\FeeControl\FeeInfo.ascx.cs">
+      <DependentUpon>FeeInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\FeeControl\FeeInfo.ascx.designer.cs">
+      <DependentUpon>FeeInfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\FeeControl\StudentDetail.asmx.cs">
+      <DependentUpon>StudentDetail.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Account\FeesInfo.aspx.cs">
+      <DependentUpon>FeesInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\FeesInfo.aspx.designer.cs">
+      <DependentUpon>FeesInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\LibraryControl\BookIssuanceForm.ascx.cs">
+      <DependentUpon>BookIssuanceForm.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\LibraryControl\BookIssuanceForm.ascx.designer.cs">
+      <DependentUpon>BookIssuanceForm.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\LibraryControl\LibraryInfo.ascx.cs">
+      <DependentUpon>LibraryInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\LibraryControl\LibraryInfo.ascx.designer.cs">
+      <DependentUpon>LibraryInfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\LibraryInfo.aspx.cs">
+      <DependentUpon>LibraryInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\LibraryInfo.aspx.designer.cs">
+      <DependentUpon>LibraryInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\StudentControl\StudentAddress.ascx.cs">
+      <DependentUpon>StudentAddress.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\StudentControl\StudentAddress.ascx.designer.cs">
+      <DependentUpon>StudentAddress.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\StudentControl\StudentFamily.ascx.cs">
+      <DependentUpon>StudentFamily.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\StudentControl\StudentFamily.ascx.designer.cs">
+      <DependentUpon>StudentFamily.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\StudentControl\StudentInfo.ascx.cs">
+      <DependentUpon>StudentInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\StudentControl\StudentInfo.ascx.designer.cs">
+      <DependentUpon>StudentInfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\StudentDetail.asmx.cs">
+      <DependentUpon>StudentDetail.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Account\StudentInfo.aspx.cs">
       <DependentUpon>StudentInfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Account\StudentInfo.aspx.designer.cs">
       <DependentUpon>StudentInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\TeacherControl\TeacherAddress.ascx.cs">
+      <DependentUpon>TeacherAddress.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\TeacherControl\TeacherAddress.ascx.designer.cs">
+      <DependentUpon>TeacherAddress.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\TeacherControl\TeacherFamily.ascx.cs">
+      <DependentUpon>TeacherFamily.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\TeacherControl\TeacherFamily.ascx.designer.cs">
+      <DependentUpon>TeacherFamily.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\TeacherControl\TeacherInfo.ascx.cs">
+      <DependentUpon>TeacherInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\TeacherControl\TeacherInfo.ascx.designer.cs">
+      <DependentUpon>TeacherInfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\TeacherInfo.aspx.cs">
+      <DependentUpon>TeacherInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\TeacherInfo.aspx.designer.cs">
+      <DependentUpon>TeacherInfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
@@ -310,7 +541,9 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DAL\Constant.cs" />
     <Compile Include="DAL\Login.cs" />
+    <Compile Include="DAL\StudentFees\FeesModule.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -13,6 +13,15 @@ namespace MySoftware.Account {
     public partial class StudentInfo {
         
         /// <summary>
+        /// sc1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ToolkitScriptManager sc1;
+        
+        /// <summary>
         /// Tabs control.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace MySoftware.Account {
         protected global::AjaxControlToolkit.TabPanel InfoPanel;
         
         /// <summary>
+        /// studentInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::MySoftware.Account.Control.StudentInfo studentInfo;
+        
+        /// <summary>
         /// addressPanel control.
         /// </summary>
         /// <remarks>
@@ -40,12 +58,30 @@ namespace MySoftware.Account {
         protected global::AjaxControlToolkit.TabPanel addressPanel;
         
         /// <summary>
-        /// family control.
+        /// studentAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel family;
+        protected global::MySoftware.Account.Control.StudentAddress studentAdd;
+        
+        /// <summary>
+        /// familyPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.TabPanel familyPanel;
+        
+        /// <summary>
+        /// studentFamily control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::MySoftware.Account.Control.StudentFamily studentFamily;
     }
 }
