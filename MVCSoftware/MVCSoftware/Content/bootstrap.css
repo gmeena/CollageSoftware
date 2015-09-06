@@ -1075,7 +1075,7 @@ html {
 }
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.42857143;
   color: #333;
   background-color: #fff;
@@ -1266,7 +1266,7 @@ h3,
 }
 h4,
 .h4 {
-  font-size: 18px;
+  font-size: 16px;
 }
 h5,
 .h5 {
@@ -2258,7 +2258,8 @@ th {
 }
 .table > thead > tr > th {
   vertical-align: bottom;
-  border-bottom: 2px solid #ddd;
+  /*Impacting ngtable*/
+  /*border-bottom: 2px solid #ddd;*/
 }
 .table > caption + thead > tr:first-child > th,
 .table > colgroup + thead > tr:first-child > th,
@@ -2532,7 +2533,7 @@ output {
   width: 100%;
   height: 34px;
   padding: 6px 12px;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.42857143;
   color: #555;
   background-color: #fff;
@@ -4903,8 +4904,8 @@ a.thumbnail.active {
   color: #333;
 }
 .alert {
-  padding: 15px;
-  margin-bottom: 20px;
+  padding: 6px;
+  margin-bottom: 5px;
   border: 1px solid transparent;
   border-radius: 4px;
 }

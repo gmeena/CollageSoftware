@@ -134,3 +134,7 @@
     display: block;
   }
 }
+
+table.table.table-bordered.table-striped.ng-scope.ng-table {
+    font-size: 13px;
+}

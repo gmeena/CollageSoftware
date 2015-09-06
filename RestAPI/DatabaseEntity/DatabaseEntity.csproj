@@ -39,8 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\Page.cs" />
+    <Compile Include="Account\Student.cs" />
+    <Compile Include="Account\StudentClass.cs" />
     <Compile Include="Account\UserLogin.cs" />
+    <Compile Include="Constant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlMapperAsync.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

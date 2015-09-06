@@ -1,10 +1,10 @@
-﻿ <style type="text/css">
-        .loading-container {
-            position: relative;
-        }
+﻿<style type="text/css">
+    .loading-container {
+        position: relative;
+    }
 
         .loading-container .loading:before, .loading-container .loading:after {
-            content: " ";
+            content: "";
             position: absolute;
             top: 0;
             left: 0;
@@ -18,102 +18,133 @@
             background-color: white;
             opacity: 0.5;
         }
-    </style>
+</style>
 
+<a href="" class="glyphicon glyphicon-plus pull-left" style="margin-bottom: 10px;" title="Add New" ng-click="StudentEdit()"></a>
+@*<button ng-click="tableParams.reload()" class="btn pull-right">Reload</button>
+<button ng-click="tableParams.sorting({})" class="btn pull-right">Clear sorting</button>*@
+<div class="clearfix"></div>
 
-<button ng-click="tableParams.reload()" class="btn pull-right">Reload</button>
-    <button ng-click="tableParams.sorting({})" class="btn pull-right">Clear sorting</button>
-    <div class="clearfix"></div>
-
-    <div loading-container="tableParams.settings().$loading">
-        <table ng-table="tableParams" show-filter="true" class="table">
-            <tr ng-repeat="user in $data">
-                <td data-title="'Name'" filter="{ 'name': 'text' }" sortable="'name'" sort-indicator="'span'">
-                    {{user.name}}
-                </td>
-                <td data-title="'Age'" sortable="'age'">
-                    {{user.age}}
-                </td>
-            </tr>
-        </table>
-    </div>
-
-<div>
-    <form name="form"  class="form-horizontal"  novalidate>
-        <div class="form-group">
-            <label class="control-label col-xs-3" for="inputFirstName">First Name:</label>
-            <div class="col-xs-9">
-                <input type="text" ng-model="firstname" name="firstname" id="firstname" placeholder="First Name" required class="form-control">
-                <span ng-show="form.firstname.$dirty && form.firstname.$error.required" class="help-block">Please enter First Name</span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-3" for="inputMiddleName">Middle Name:</label>
-            <div class="col-xs-9">
-                <input type="text" ng-model="middlename" name="middlename" id="middlename" placeholder="Middle Name" required class="form-control">
-                <span ng-show="form.middlename.$dirty && form.middlename.$error.required" class="help-block">Please enter Middle Name</span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-3" for="inputLastName">Last Name:</label>
-            <div class="col-xs-9">
-                <input type="text" ng-model="lastname" name="lastname" id="lastname" placeholder="Last Name" required class="form-control">
-                <span ng-show="form.lastname.$dirty && form.lastname.$error.required" class="help-block">Please enter Last Name</span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-3" for="phoneNumber">Phone Number:</label>
-            <div class="col-xs-9">
-                <input type="text" ng-model="phonenumber" name="phonenumber" id="phonenumber" placeholder="Phone Number" required class="form-control">
-                <span ng-show="form.phonenumber.$dirty && form.phonenumber.$error.required" class="help-block">Please enter Phone Number</span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-3" for="inputdob">Date of birth:</label>
-            <div class="col-xs-9">
-                <input type="text" ng-model="dob" name="dob" id="dob" placeholder="Date of birth" required class="form-control">
-                <span ng-show="form.dob.$dirty && form.dob.$error.required" class="help-block">Please enter Date of birth</span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-3" for="inputEmail">Email:</label>
-            <div class="col-xs-9">
-                <input type="email" ng-model="email" name="email" required class="form-control" id="inputEmail" placeholder="Email">
-                <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">Please enter email</span>
-                <span ng-show="form.email.$dirty && form.email.$error.email" class="help-block">Email is invalid</span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-3" for="ddclass">Class:</label>
-            <div class="col-xs-3">
-                <select class="form-control">
-                    <option>Class</option>
-                </select>
-            </div>
-            <span ng-show="form.class.$dirty && form.class.$error.required" class="help-block">Please select class</span>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-3">Gender:</label>
-            <div class="col-xs-2">
-                <label class="radio-inline">
-                    <input type="radio" name="genderRadios" value="male">
-                    Male
-                </label>
-            </div>
-            <div class="col-xs-2">
-                <label class="radio-inline">
-                    <input type="radio" name="genderRadios" value="female">
-                    Female
-                </label>
-            </div>
-        </div>
-
-        <br>
-        <div class="form-group">
-            <div class="col-xs-offset-3 col-xs-9">
-                <input type="submit" value="Submit" ng-click='LoginSubmit()' ng-disabled="form.$invalid" class="btn btn-primary">
-                <input type="reset" class="btn btn-default" value="Reset">
-            </div>
-        </div>
-    </form>
+<div loading-container="tableParams.settings().$loading">
+    <table ng-table="tableParams" show-filter="true" class="table table-bordered table-striped">
+        <tr ng-repeat="user in $data">
+            <td data-title="'Student Name'" filter="{ 'Student_Name': 'text' }" sortable="'Student_Name'" sort-indicator="'span'">
+                <span ng-if="!user.$edit">{{user.Student_Name}} <a title="Edit" studentid="{{user.Student_Id}}" class="glyphicon glyphicon-edit" href="javascript:void(0);" style="cursor: pointer;" ng-click="StudentEdit(this)"></a></span>
+                <div ng-if="user.$edit">
+                    <input class="form-control" type="text" ng-model="user.Student_Name" />
+                </div>
+            </td>
+            <td data-title="'DOB'" sortable="'DOB'">{{user.DOB}}
+                @*<div ng-if="user.$edit"><input class="form-control" type="date" ng-model="user.DOB" /></div>*@
+            </td>
+            <td data-title="'Email'" sortable="'Email'"><span ng-if="!user.$edit">{{user.Email}}</span>
+                <div ng-if="user.$edit">
+                    <input class="form-control" type="text" ng-model="user.Email" />
+                </div>
+            </td>
+            <td data-title="'Phone'" sortable="'Phone'"><span ng-if="!user.$edit">{{user.Phone}}</span>
+                <div ng-if="user.$edit">
+                    <input class="form-control" type="text" ng-model="user.Phone" />
+                </div>
+            </td>
+            @*<td data-title="''" header-class="'glyphicon glyphicon-plus'">
+                <a ng-if="!user.$edit" href="" class="btn btn-default btn-xs" ng-click="user.$edit = true">Edit</a>
+                <a ng-if="user.$edit" href="" class="btn btn-primary btn-xs" ng-click="user.$edit = false">Save</a>
+            </td>*@
+        </tr>
+    </table>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form name="form" class="form-horizontal" novalidate>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Add/Edit Student</h4>
+
+                </div>
+                <div id="alertErrorUpdateAddStudent" class="alert alert-danger hidden" role="alert">
+                    <strong>Error!</strong> Data not saved.
+                </div>
+                <div id="alertSuccessUpdateAddStudent" class="alert alert-success hidden" role="alert">
+                    <strong>Well done!</strong> Data saved.
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="inputFirstName">First Name:</label>
+                        <div class="col-xs-9">
+                            <input type="text" ng-model="user.First_Name" name="firstname" id="firstname" placeholder="First Name" required class="form-control">
+                            <span ng-show="form.firstname.$dirty && form.firstname.$error.required" class="help-block">Please enter First Name</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="inputMiddleName">Middle Name:</label>
+                        <div class="col-xs-9">
+                            <input type="text" ng-model="user.Middle_Name" name="middlename" id="middlename" placeholder="Middle Name" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="inputLastName">Last Name:</label>
+                        <div class="col-xs-9">
+                            <input type="text" ng-model="user.Last_Name" name="lastname" id="lastname" placeholder="Last Name" required class="form-control">
+                            <span ng-show="form.lastname.$dirty && form.lastname.$error.required" class="help-block">Please enter Last Name</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="phoneNumber">Phone Number:</label>
+                        <div class="col-xs-9">
+                            <input type="text" ng-model="user.Phone" name="phonenumber" id="phonenumber" placeholder="Phone Number" required class="form-control">
+                            <span ng-show="form.phonenumber.$dirty && form.phonenumber.$error.required" class="help-block">Please enter Phone Number</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="inputdob">Date of birth:</label>
+                        <div class="col-xs-9">
+                            <input type="text" ng-model="user.DOB" name="dob" id="dob" placeholder="Date of birth" required class="form-control">
+                            <span ng-show="form.dob.$dirty && form.dob.$error.required" class="help-block">Please enter Date of birth</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="inputEmail">Email:</label>
+                        <div class="col-xs-9">
+                            <input type="email" ng-model="user.Email" name="email" required class="form-control" id="inputEmail" placeholder="Email">
+                            <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">Please enter email</span>
+                            <span ng-show="form.email.$dirty && form.email.$error.email" class="help-block">Email is invalid</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="ddclass">Class:</label>
+                        <div class="col-xs-5">
+                            <select class="form-control" ng-model='user.Class_Id' ng-options="Class.Class_Id as Class.Class_Name for Class in Classes">
+                                <option value="">-- Please select class --</option>
+                            </select>
+                        </div>
+                        <span ng-show="form.class.$dirty && form.class.$error.required" class="help-block">Please select class</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3">Gender:</label>
+                        <div class="col-xs-2">
+                            <label class="radio-inline">
+                                <input type="radio" name="genderRadios" ng-model="user.Gender_Id" value="1">
+                                Male
+                            </label>
+                        </div>
+                        <div class="col-xs-2">
+                            <label class="radio-inline">
+                                <input type="radio" name="genderRadios" ng-model="user.Gender_Id" value="2">
+                                Female
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <input type="submit" value="Save changes" ng-click='UpdateAddStudent()' ng-disabled="form.$invalid" class="btn btn-primary btn-sm">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

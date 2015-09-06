@@ -2,3 +2,4 @@ E:\Collage\CollageSoftware\RestAPI\DatabaseEntity\bin\Debug\DatabaseEntity.dll
 E:\Collage\CollageSoftware\RestAPI\DatabaseEntity\bin\Debug\DatabaseEntity.pdb
 E:\Collage\CollageSoftware\RestAPI\DatabaseEntity\obj\Debug\DatabaseEntity.dll
 E:\Collage\CollageSoftware\RestAPI\DatabaseEntity\obj\Debug\DatabaseEntity.pdb
+E:\Collage\CollageSoftware\RestAPI\DatabaseEntity\obj\Debug\DatabaseEntity.csprojResolveAssemblyReference.cache
