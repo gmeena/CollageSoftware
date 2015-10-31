@@ -50,6 +50,52 @@ namespace MVCSoftware.Areas.Student.Controllers
 
         [AllowAnonymous]
         [HttpPost]
+        public async Task<JsonResult> GetStudentsAddress(int count, int pageindex)
+        { // int count, int page
+            List<DatabaseEntity.Account.StudentAddress> result = new List<DatabaseEntity.Account.StudentAddress>(); ;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:52805/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                DatabaseEntity.Account.Page pageobj = new DatabaseEntity.Account.Page();
+                pageobj.Count = count;
+                pageobj.PageCount = pageindex;
+                // New code:
+                HttpResponseMessage response = await client.PostAsJsonAsync("api/Student/GetStudentsAddress", pageobj);
+                if (response.IsSuccessStatusCode)
+                {
+                    result = await response.Content.ReadAsAsync<List<DatabaseEntity.Account.StudentAddress>>();
+                }
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<JsonResult> GetStudentsFamily(int count, int pageindex)
+        { // int count, int page
+            List<DatabaseEntity.Account.StudentFamily> result = new List<DatabaseEntity.Account.StudentFamily>(); ;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:52805/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                DatabaseEntity.Account.Page pageobj = new DatabaseEntity.Account.Page();
+                pageobj.Count = count;
+                pageobj.PageCount = pageindex;
+                // New code:
+                HttpResponseMessage response = await client.PostAsJsonAsync("api/Student/GetStudentsFamily", pageobj);
+                if (response.IsSuccessStatusCode)
+                {
+                    result = await response.Content.ReadAsAsync<List<DatabaseEntity.Account.StudentFamily>>();
+                }
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
         public async Task<JsonResult> UpdateAddStudent(DatabaseEntity.Account.Student student)
         {
             int result = 0;
@@ -84,6 +130,69 @@ namespace MVCSoftware.Areas.Student.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     result = await response.Content.ReadAsAsync<List<DatabaseEntity.Account.StudentClass>>();
+                }
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<JsonResult> GetAddressType()
+        { // int count, int page
+            List<DatabaseEntity.Account.AddressType> result = new List<DatabaseEntity.Account.AddressType>(); ;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:52805/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                // New code:
+                HttpResponseMessage response = await client.GetAsync("api/Student/GetAddressType");
+                if (response.IsSuccessStatusCode)
+                {
+                    result = await response.Content.ReadAsAsync<List<DatabaseEntity.Account.AddressType>>();
+                }
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<JsonResult> GetCity()
+        { // int count, int page
+            List<DatabaseEntity.Account.City> result = new List<DatabaseEntity.Account.City>(); ;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:52805/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                // New code:
+                HttpResponseMessage response = await client.GetAsync("api/Student/GetCity");
+                if (response.IsSuccessStatusCode)
+                {
+                    result = await response.Content.ReadAsAsync<List<DatabaseEntity.Account.City>>();
+                }
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<JsonResult> GetRelationType()
+        { // int count, int page
+            List<DatabaseEntity.Account.RelationType> result = new List<DatabaseEntity.Account.RelationType>(); ;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:52805/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                // New code:
+                HttpResponseMessage response = await client.GetAsync("api/Student/GetRelationType");
+                if (response.IsSuccessStatusCode)
+                {
+                    result = await response.Content.ReadAsAsync<List<DatabaseEntity.Account.RelationType>>();
                 }
             }
             return Json(result, JsonRequestBehavior.AllowGet);

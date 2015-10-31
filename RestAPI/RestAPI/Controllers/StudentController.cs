@@ -49,6 +49,54 @@ namespace RestAPI.Controllers
         }
 
         [HttpPost]
+        public List<StudentAddress> GetStudentsAddress(DatabaseEntity.Account.Page pageobj)
+        {
+            string connStr = ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString;
+            IEnumerable<StudentAddress> result;
+            using (IDbConnection sqlConn = new SqlConnection(connStr))
+            {
+                try
+                {
+                    sqlConn.Open();
+                    result = sqlConn.Query<StudentAddress>(Constant.USP_GetStudentsAddress, new { @page = pageobj.PageCount, @count = pageobj.Count }, commandType: CommandType.StoredProcedure);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    sqlConn.Close();
+                }
+            }
+            return result.ToList();
+        }
+
+        [HttpPost]
+        public List<StudentFamily> GetStudentsFamily(DatabaseEntity.Account.Page pageobj)
+        {
+            string connStr = ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString;
+            IEnumerable<StudentFamily> result;
+            using (IDbConnection sqlConn = new SqlConnection(connStr))
+            {
+                try
+                {
+                    sqlConn.Open();
+                    result = sqlConn.Query<StudentFamily>(Constant.USP_GetStudentsFamily, new { @page = pageobj.PageCount, @count = pageobj.Count }, commandType: CommandType.StoredProcedure);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    sqlConn.Close();
+                }
+            }
+            return result.ToList();
+        }
+
+        [HttpPost]
         public int UpdateAddStudent(DatabaseEntity.Account.Student student)
         {
             string connStr = ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString;
@@ -108,6 +156,78 @@ namespace RestAPI.Controllers
                 {
                     sqlConn.Open();
                     result = sqlConn.Query<StudentClass>(Constant.USP_GetClass, commandType: CommandType.StoredProcedure);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    sqlConn.Close();
+                }
+            }
+            return result.ToList();
+        }
+
+        [HttpGet]
+        public List<AddressType> GetAddressType()
+        {
+            string connStr = ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString;
+            IEnumerable<AddressType> result;
+            using (IDbConnection sqlConn = new SqlConnection(connStr))
+            {
+                try
+                {
+                    sqlConn.Open();
+                    result = sqlConn.Query<AddressType>(Constant.USP_GetAddressType, commandType: CommandType.StoredProcedure);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    sqlConn.Close();
+                }
+            }
+            return result.ToList();
+        }
+
+        [HttpGet]
+        public List<City> GetCity()
+        {
+            string connStr = ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString;
+            IEnumerable<City> result;
+            using (IDbConnection sqlConn = new SqlConnection(connStr))
+            {
+                try
+                {
+                    sqlConn.Open();
+                    result = sqlConn.Query<City>(Constant.USP_GetCity, commandType: CommandType.StoredProcedure);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    sqlConn.Close();
+                }
+            }
+            return result.ToList();
+        }
+
+        [HttpGet]
+        public List<RelationType> GetRelationType()
+        {
+            string connStr = ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString;
+            IEnumerable<RelationType> result;
+            using (IDbConnection sqlConn = new SqlConnection(connStr))
+            {
+                try
+                {
+                    sqlConn.Open();
+                    result = sqlConn.Query<RelationType>(Constant.USP_GetRelationType, commandType: CommandType.StoredProcedure);
                 }
                 catch (Exception)
                 {

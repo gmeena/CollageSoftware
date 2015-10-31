@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Chapter";
+}
+
+<h2>Chapter</h2>
+
+<div ng-app="plunker" ng-controller="TabsDemoCtrl" class="ng-scope">
+
+  <hr />
+
+  <tabset>
+    <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disabled="tab.disabled" select="tabSelected($index)">
+      {{tab.content}}
+    </tab>
+  </tabset>
+
+  <hr />
+  <button ng-show="!isLastTab()" class="btn btn-small" ng-click="proceed()">Next</button>
+  <button ng-show="isLastTab()" class="btn btn-small" ng-click="proceed()">Finish</button>
+  
+</div>
+
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    @Scripts.Render("~/AngularJs/Teacher.js")
+}
