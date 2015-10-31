@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Attendance Information</h2>
+<div class="ng-scope" ng-app="myApp" ng-controller="AttendanceInfoController">
+    <form name="form" class="form-horizontal" novalidate>
+
+            <div class="form-group">
+                <label class="control-label col-xs-3" for="ddclass">Class:</label>
+                <div class="col-xs-5">
+                    <select class="form-control" ng-model='user.Class_Id' ng-options="Class.Class_Id as Class.Class_Name for Class in Classes">
+                        <option value="">-- Please select class --</option>
+                    </select>
+                </div>
+                <span ng-show="form.class.$dirty && form.class.$error.required" class="help-block">Please select class</span>
+            </div>
+            
+    </form>
+</div>
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    @Scripts.Render("~/AngularJs/Attendance.js")
+}

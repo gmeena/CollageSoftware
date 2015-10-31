@@ -166,6 +166,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Attendance\AttendanceAreaRegistration.cs" />
+    <Compile Include="Areas\Attendance\Controllers\AttendanceInfoController.cs" />
     <Compile Include="Areas\Student\Controllers\StudentInfoController.cs" />
     <Compile Include="Areas\Student\StudentAreaRegistration.cs" />
     <Compile Include="Areas\Teacher\Controllers\TeacherInfoController.cs" />
@@ -283,6 +285,10 @@
     <Content Include="Areas\Teacher\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Teacher\Views\TeacherInfo\Chapter.cshtml" />
     <Content Include="App_Data\Mydatabase" />
+    <Content Include="Areas\Attendance\Views\Web.config" />
+    <Content Include="Areas\Attendance\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Attendance\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Attendance\Views\AttendanceInfo\Index.cshtml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1090,6 +1096,7 @@
     <Content Include="Scripts\version.json" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Attendance\Models\" />
     <Folder Include="Areas\Student\Models\" />
     <Folder Include="Areas\Teacher\Models\" />
   </ItemGroup>
