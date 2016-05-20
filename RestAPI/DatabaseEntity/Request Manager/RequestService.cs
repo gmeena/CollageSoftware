@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DatabaseEntity
 {
-    public class RequestService
+    public class RequestService : IRequestService
     {
         public int Request_Id { get; set; }
         public int Requester_Id { get; set; }

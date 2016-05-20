@@ -45,6 +45,7 @@ namespace MVCSoftware.Areas.Student.Controllers
                     result = await response.Content.ReadAsAsync<List<DatabaseEntity.Account.Student>>();
                 }
             }
+
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

@@ -3,3 +3,8 @@ E:\Collage\CollageSoftware\RestAPI\DatabaseEntity\bin\Debug\DatabaseEntity.pdb
 E:\Collage\CollageSoftware\RestAPI\DatabaseEntity\obj\Debug\DatabaseEntity.dll
 E:\Collage\CollageSoftware\RestAPI\DatabaseEntity\obj\Debug\DatabaseEntity.pdb
 E:\Collage\CollageSoftware\RestAPI\DatabaseEntity\obj\Debug\DatabaseEntity.csprojResolveAssemblyReference.cache
+C:\Users\gmeena\Documents\GitHub\InternalProject\CollageSoftware\RestAPI\DatabaseEntity\bin\Debug\DatabaseEntity.dll
+C:\Users\gmeena\Documents\GitHub\InternalProject\CollageSoftware\RestAPI\DatabaseEntity\bin\Debug\DatabaseEntity.pdb
+C:\Users\gmeena\Documents\GitHub\InternalProject\CollageSoftware\RestAPI\DatabaseEntity\obj\Debug\DatabaseEntity.dll
+C:\Users\gmeena\Documents\GitHub\InternalProject\CollageSoftware\RestAPI\DatabaseEntity\obj\Debug\DatabaseEntity.pdb
+C:\Users\gmeena\Documents\GitHub\InternalProject\CollageSoftware\RestAPI\DatabaseEntity\obj\Debug\DatabaseEntity.csprojResolveAssemblyReference.cache

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DatabaseEntity.Account
 {
-    public class Person
+    public class Person : IPerson
     {
         public int Person_Id { get; set; }
         public string First_Name { get; set; }

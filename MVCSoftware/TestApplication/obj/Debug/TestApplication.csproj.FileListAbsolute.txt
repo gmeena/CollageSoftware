@@ -1,0 +1,8 @@
+C:\Users\gmeena\Documents\GitHub\InternalProject\CollageSoftware\MVCSoftware\TestApplication\bin\Debug\TestApplication.exe.config
+C:\Users\gmeena\Documents\GitHub\InternalProject\CollageSoftware\MVCSoftware\TestApplication\bin\Debug\TestApplication.exe
+C:\Users\gmeena\Documents\GitHub\InternalProject\CollageSoftware\MVCSoftware\TestApplication\bin\Debug\TestApplication.pdb
+C:\Users\gmeena\Documents\GitHub\InternalProject\CollageSoftware\MVCSoftware\TestApplication\bin\Debug\DatabaseEntity.dll
+C:\Users\gmeena\Documents\GitHub\InternalProject\CollageSoftware\MVCSoftware\TestApplication\bin\Debug\DatabaseEntity.pdb
+C:\Users\gmeena\Documents\GitHub\InternalProject\CollageSoftware\MVCSoftware\TestApplication\obj\Debug\TestApplication.csprojResolveAssemblyReference.cache
+C:\Users\gmeena\Documents\GitHub\InternalProject\CollageSoftware\MVCSoftware\TestApplication\obj\Debug\TestApplication.exe
+C:\Users\gmeena\Documents\GitHub\InternalProject\CollageSoftware\MVCSoftware\TestApplication\obj\Debug\TestApplication.pdb

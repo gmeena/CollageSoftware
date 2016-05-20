@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using DatabaseEntity.Account;
 
-namespace DatabaseEntity.Leave
+namespace DatabaseEntity.Leave_Manager
 {
-    public class LeaveDetails : Person
+    public class LeaveDetails : ILeaveDetails
     {
         public int Leave_Type { get; set; }
         public int Balance { get; set; }
