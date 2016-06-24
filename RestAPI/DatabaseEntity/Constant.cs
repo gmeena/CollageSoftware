@@ -14,6 +14,10 @@ namespace DatabaseEntity
 
         public static string Sick_Leave = "Sick Leave";
 
+        #region Entity Codes
+        public static string DSM = "DSM";
+        #endregion
+
         public enum CreditCycle
         {
             Daily = 0,
