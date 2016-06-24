@@ -41,16 +41,40 @@
   <ItemGroup>
     <Compile Include="Account\AddressType.cs" />
     <Compile Include="Account\City.cs" />
+    <Compile Include="Account\PersonAddress.cs" />
+    <Compile Include="Account\Employee.cs" />
     <Compile Include="Account\Page.cs" />
     <Compile Include="Account\RelationType.cs" />
+    <Compile Include="Account\FamilyMember.cs" />
+    <Compile Include="Account\Person.cs" />
     <Compile Include="Account\Student.cs" />
     <Compile Include="Account\StudentAddress.cs" />
     <Compile Include="Account\StudentClass.cs" />
     <Compile Include="Account\StudentFamily.cs" />
+    <Compile Include="Account\Teacher.cs" />
     <Compile Include="Account\UserLogin.cs" />
     <Compile Include="Constant.cs" />
+    <Compile Include="Leave\LeaveDetails.cs" />
+    <Compile Include="Leave\LeaveRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestService.cs" />
     <Compile Include="SqlMapperAsync.cs" />
+    <Compile Include="WorkflowManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Attendance\" />
+    <Folder Include="Calender\" />
+    <Folder Include="Culuture\" />
+    <Folder Include="DataArchive\" />
+    <Folder Include="Examination\" />
+    <Folder Include="NOC\" />
+    <Folder Include="Payroll\" />
+    <Folder Include="Promotion\" />
+    <Folder Include="Recruitment\" />
+    <Folder Include="Resignation\" />
+    <Folder Include="Sports\" />
+    <Folder Include="Survey\" />
+    <Folder Include="Transfer\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
