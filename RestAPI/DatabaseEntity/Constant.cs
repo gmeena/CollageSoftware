@@ -27,5 +27,12 @@ namespace DatabaseEntity
             Yearly = 4,
             Fullservice = 5
         }
+        public static string USP_GetAddressType = "usp_GetAddressType";
+        public static string USP_GetCity = "usp_GetCity";
+        public static string USP_GetStudentsAddress = "usp_GetStudentsAddress";
+        public static string USP_GetRelationType = "usp_GetRelationType";
+        public static string USP_GetStudentsFamily = "usp_GetStudentsFamily";
+        
+            
     }
 }

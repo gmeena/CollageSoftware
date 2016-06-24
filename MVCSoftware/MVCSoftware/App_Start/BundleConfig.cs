@@ -16,6 +16,9 @@ namespace MVCSoftware
                         "~/Scripts/angular-resource.js",
                         "~/Scripts/angular-mocks.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/uijquery").Include(
+                        "~/Scripts/angular-ui/ui-bootstrap-tpls.js"));
+
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));
@@ -32,7 +35,9 @@ namespace MVCSoftware
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css",
                 "~/Content/bootstrap.css",
                 "~/Content/jumbotron-narrow.css",
-                    "~/Content/ng-table.css"));
+                    "~/Content/ng-table.css",
+                    "~/Content/datepicker.css",
+                    "~/Content/theme.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
@@ -44,7 +49,7 @@ namespace MVCSoftware
                         "~/Content/themes/base/jquery.ui.dialog.css",
                         "~/Content/themes/base/jquery.ui.slider.css",
                         "~/Content/themes/base/jquery.ui.tabs.css",
-                        "~/Content/themes/base/jquery.ui.datepicker.css",
+                        "~/Content/themes/base/datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
             

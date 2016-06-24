@@ -1,52 +1,112 @@
-﻿@*<div class="ng-scope" ng-app="myApp" ng-controller="LoginController">*@
-    <form name="addressform"  class="form-horizontal"  novalidate>
-        <div class="form-group">
-            <label class="control-label col-xs-3" for="inputFirstName">Student Name:</label>
-            <div class="col-xs-9">
-                <input type="text" ng-model="name" name="name" id="name" placeholder="Student Name" required class="form-control">
-                <span ng-show="addressform.name.$dirty && addressform.name.$error.required" class="help-block">Please enter Name</span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-3" for="ddaddresstype">Address Type:</label>
-            <div class="col-xs-3">
-                <select class="form-control">
-                    <option>Address Type</option>
-                </select>
-            </div>
-            <span ng-show="addressform.addresstype.$dirty && addressform.addresstype.$error.required" class="help-block">Please select address type</span>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-3" for="ddcity">City:</label>
-            <div class="col-xs-3">
-                <select class="form-control">
-                    <option>City</option>
-                </select>
-            </div>
-            <span ng-show="addressform.city.$dirty && addressform.city.$error.required" class="help-block">Please select city</span>
-        </div>
+﻿<style type="text/css">
+    .loading-container {
+        position: relative;
+    }
 
-        <div class="form-group">
-            <label class="control-label col-xs-3" for="postalAddress">Address:</label>
-            <div class="col-xs-9">
-                <textarea rows="3" class="form-control" ng-model="postalAddress" name="postalAddress" id="postalAddress" placeholder="Postal Address" required></textarea>
-                <span ng-show="addressform.postalAddress.$dirty && addressform.postalAddress.$error.required" class="help-block">Please enter postal address</span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-3" for="ZipCode">Zip Code:</label>
-            <div class="col-xs-9">
-                <input type="text" class="form-control" ng-model="zipcode" name="zipcode" required id="ZipCode" placeholder="Zip Code">
-                <span ng-show="addressform.zipcode.$dirty && addressform.zipcode.$error.required" class="help-block">Please enter zip code</span>
-            </div>
-        </div>
+        .loading-container .loading:before, .loading-container .loading:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            min-height: 50px;
+            min-width: 50px;
+        }
 
-        <br>
-        <div class="form-group">
-            <div class="col-xs-offset-3 col-xs-9">
-                <input type="submit" value="Submit" ng-click='LoginSubmit()' ng-disabled="addressform.$invalid"  class="btn btn-primary" >
-                <input type="reset" class="btn btn-default" value="Reset">
-            </div>
+        .loading-container .loading:before {
+            background-color: white;
+            opacity: 0.5;
+        }
+</style>
+
+<a href="" class="glyphicon glyphicon-plus pull-left" style="margin-bottom: 10px;" title="Add New" ng-click="StudentAddressEdit()"></a>
+@*<button ng-click="tableParams.reload()" class="btn pull-right">Reload</button>
+<button ng-click="tableParams.sorting({})" class="btn pull-right">Clear sorting</button>*@
+<div class="clearfix"></div>
+
+<div loading-container="tableParamsAddress.settings().$loading">
+    <table ng-table="tableParamsAddress" show-filter="true" class="table table-bordered table-striped">
+        <tr ng-repeat="userAddress in $data">
+            <td data-title="'Student Name'" filter="{ 'Student_Name': 'text' }" sortable="'Student_Name'" sort-indicator="'span'">{{userAddress.Student_Name}} 
+                <a title="Edit" studentid="{{userAddress.Student_Id}}" class="glyphicon glyphicon-edit" href="javascript:void(0);" style="cursor: pointer;" ng-click="StudentAddressEdit(this)"></a>
+            </td>
+            <td data-title="'AddressType'" sortable="'AddressType'">{{userAddress.AddressType}}
+            </td>
+            <td data-title="'City'" sortable="'City'">{{userAddress.City}}
+            </td>
+            <td data-title="'Address'">{{userAddress.Address}}
+            </td>
+            <td data-title="'ZipCode'" sortable="'ZipCode'">{{userAddress.ZipCode}}
+            </td>
+        </tr>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myAddressModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form name="addressform" class="form-horizontal" novalidate>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Add/Edit Student Address</h4>
+                </div>
+
+                <div id="errorAdd" class="alert alert-danger hidden" role="alert">
+                    <strong>Error!</strong> Data not saved.
+                </div>
+                <div id="successAdd" class="alert alert-success hidden" role="alert">
+                    <strong>Well done!</strong> Data saved.
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="inputFirstName">Student Name:</label>
+                        <div class="col-xs-9">
+                            <input type="text" ng-model="userAddress.Student_Name" ng-disabled="true" name="name" id="name" placeholder="Student Name" required class="form-control">
+                        <span ng-show="addressform.name.$dirty && addressform.name.$error.required" class="help-block">Please enter name</span>
+                        </div>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="ddaddresstype">Address Type:</label>
+                        <div class="col-xs-5">
+                            <select class="form-control" ng-model="userAddress.AddressType_Id" ng-options="AddressType.AddressType_Id as AddressType.AddressType_Name for AddressType in AddressTypes">
+                                <option value="">-- Please select address type --</option>
+                            </select>
+                        </div>
+                        <span ng-show="addressform.addresstype.$dirty && addressform.addresstype.$error.required" class="help-block">Please select address type</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="ddcity">City:</label>
+                        <div class="col-xs-5">
+                            <select class="form-control" ng-model="userAddress.City_Id" ng-options="City.City_Id as City.City_Name for City in Cities">
+                                <option value="">-- please select city --</option>
+                            </select>
+                        </div>
+                        <span ng-show="addressform.city.$dirty && addressform.city.$error.required" class="help-block">Please select city</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="postalAddress">Address:</label>
+                        <div class="col-xs-9">
+                            <textarea rows="3" class="form-control" ng-model="userAddress.Address" name="postalAddress" id="postalAddress" placeholder="Postal Address" required></textarea>
+                            <span ng-show="addressform.postalAddress.$dirty && addressform.postalAddress.$error.required" class="help-block">Please enter postal address</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="ZipCode">Zip Code:</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" ng-model="userAddress.ZipCode" name="zipcode" required id="ZipCode" placeholder="Zip Code">
+                            <span ng-show="addressform.zipcode.$dirty && addressform.zipcode.$error.required" class="help-block">Please enter zip code</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    <input type="submit" value="Save changes" ng-click='UpdateAddStudentAddress()' ng-disabled="addressform.$invalid" class="btn btn-primary btn-sm">
+                </div>
+            </form>
         </div>
-    </form>
-@*</div>*@
+    </div>
+</div>

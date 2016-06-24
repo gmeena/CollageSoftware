@@ -83,8 +83,6 @@ var app = angular.module('myApp', ['ngTable', 'ngResource', 'ngMockE2E']).
     })
     .controller('StudentController', ['$scope', '$http', '$resource', 'NgTableParams', '$filter', '$timeout', function ($scope, $http, $resource, NgTableParams, $filter, $timeout) {
 
-        //        var Api = $resource('/data');
-
         $scope.tableParams = new NgTableParams({
             page: 1,            // show first page
             count: 5,          // count per page
@@ -96,17 +94,6 @@ var app = angular.module('myApp', ['ngTable', 'ngResource', 'ngMockE2E']).
             paginationMaxBlocks: 9,
             total: 0,           // length of data
             getData: function ($defer, params) {
-                // ajax request to api
-                //Api.get(params.url(), function (data) {
-                //    $timeout(function () {
-                //        // update table params
-                //        params.total(data.length);
-                //        // set new data
-                //        $defer.resolve(data);
-                //    }, 500);
-                //});
-
-
                 $http({
                     method: 'POST',
                     async: true,
@@ -131,6 +118,83 @@ var app = angular.module('myApp', ['ngTable', 'ngResource', 'ngMockE2E']).
                     // update table params
                     params.total(total);
                     // set new data
+                    $defer.resolve(filterdata);
+                })
+                .error(function (e) {
+                    alert('hello');
+                });
+            }
+        });
+
+        $scope.tableParamsAddress = new NgTableParams({
+            page: 1,            // show first page
+            count: 5,          // count per page
+            sorting: {
+                name: 'asc'     // initial sorting
+            }
+        }, {
+            counts: [5, 10, 15],
+            paginationMaxBlocks: 9,
+            total: 0,           // length of data
+            getData: function ($defer, params) {
+                $http({
+                    method: 'POST',
+                    async: true,
+                    url: '/Student/StudentInfo/GetStudentsAddress',
+                    data: { count: params.count(), pageindex: params.page() }
+                })
+                .success(function (data) {
+                    $scope.studentAddress = data;
+
+                    var filterdata = params.filter() ? $filter('filter')($scope.studentAddress, params.filter()) : $scope.studentAddress;
+                    var total;
+                    if (data.length > filterdata.length) {
+                        total = filterdata.length;
+                    } else {
+                        total = data[0].CountAddress;
+                    }
+
+                    filterdata = params.sorting() ? $filter('orderBy')(filterdata, params.orderBy()) : filterdata;
+                    params.total(total);
+                    $defer.resolve(filterdata);
+                })
+                .error(function (e) {
+                    alert('hello');
+                });
+            }
+        });
+
+
+        $scope.tableParamsFamily = new NgTableParams({
+            page: 1,            // show first page
+            count: 5,          // count per page
+            sorting: {
+                name: 'asc'     // initial sorting
+            }
+        }, {
+            counts: [5, 10, 15],
+            paginationMaxBlocks: 9,
+            total: 0,           // length of data
+            getData: function ($defer, params) {
+                $http({
+                    method: 'POST',
+                    async: true,
+                    url: '/Student/StudentInfo/GetStudentsFamily',
+                    data: { count: params.count(), pageindex: params.page() }
+                })
+                .success(function (data) {
+                    $scope.studentFamily = data;
+
+                    var filterdata = params.filter() ? $filter('filter')($scope.studentFamily, params.filter()) : $scope.studentFamily;
+                    var total;
+                    if (data.length > filterdata.length) {
+                        total = filterdata.length;
+                    } else {
+                        total = data[0].CountFamily;
+                    }
+
+                    filterdata = params.sorting() ? $filter('orderBy')(filterdata, params.orderBy()) : filterdata;
+                    params.total(total);
                     $defer.resolve(filterdata);
                 })
                 .error(function (e) {
@@ -186,6 +250,48 @@ var app = angular.module('myApp', ['ngTable', 'ngResource', 'ngMockE2E']).
                 });
         }
 
+        $scope.UpdateAddStudentAddress = function () {
+
+            var studentAddress = {
+                Student_Id: $scope.userAddress.Student_Id, AddressType: $scope.AddressType.AddressType_Id, City: $scope.AddressType.City_Id,
+                Address: $scope.AddressType.Address, ZipCode: $scope.AddressType.ZipCode
+            };
+
+            $http({
+                method: 'POST',
+                async: true,
+                url: '/Student/StudentInfo/UpdateAddStudentAddress',
+                data: studentAddress
+            })
+                .success(function (data) {
+                    $("#successAdd").fadeIn(300).delay(1500).fadeOut(400).removeClass("hidden");
+                })
+                .error(function () {
+                    $("#errorAdd").removeClass("hidden");
+                });
+        }
+
+        $scope.UpdateAddStudentFamily = function () {
+
+            var studentFamily = {
+                Student_Id: $scope.userAddress.Student_Id, AddressType: $scope.AddressType.AddressType_Id, City: $scope.AddressType.City_Id,
+                Address: $scope.AddressType.Address, ZipCode: $scope.AddressType.ZipCode
+            };
+
+            $http({
+                method: 'POST',
+                async: true,
+                url: '/Student/StudentInfo/UpdateAddStudentFamily',
+                data: studentFamily
+            })
+                .success(function (data) {
+                    $("#successFam").fadeIn(300).delay(1500).fadeOut(400).removeClass("hidden");
+                })
+                .error(function () {
+                    $("#errorFam").removeClass("hidden");
+                });
+        }
+
         $scope.StudentEdit = function (e) {
             $('#myModal').modal('show');
             $(".alert").alert();
@@ -197,6 +303,32 @@ var app = angular.module('myApp', ['ngTable', 'ngResource', 'ngMockE2E']).
             }
         }
 
+        $scope.StudentAddressEdit = function (e) {
+            $('#myAddressModal').modal('show');
+            $(".alert").alert();
+            if (e != undefined) {
+                $scope.userAddress = this.userAddress;
+                $("#name").attr("disabled","disabled");
+            }
+            else {
+                $("#name").removeAttr("disabled");
+                $scope.userAddress = null;
+            }
+        }
+
+        $scope.StudentFamilyEdit = function (e) {
+            $('#myFamilyModal').modal('show');
+            $(".alert").alert();
+            if (e != undefined) {
+                $scope.userFamily = this.userFamily;
+                $("#nameFamily").attr("disabled", "disabled");
+            }
+            else {
+                $("#nameFamily").removeAttr("disabled");
+                $scope.userFamily = null;
+            }
+        }
+
         $http({
             method: 'GET',
             async: true,
@@ -204,6 +336,43 @@ var app = angular.module('myApp', ['ngTable', 'ngResource', 'ngMockE2E']).
         })
                 .success(function (data) {
                     $scope.Classes = data;
+                })
+                .error(function (e) {
+
+                });
+
+        $http({
+            method: 'GET',
+            async: true,
+            url: '/Student/StudentInfo/GetAddressType'
+        })
+                .success(function (data) {
+                    $scope.AddressTypes = data;
+                })
+                .error(function (e) {
+
+                });
+
+
+        $http({
+            method: 'GET',
+            async: true,
+            url: '/Student/StudentInfo/GetCity'
+        })
+                .success(function (data) {
+                    $scope.Cities = data;
+                })
+                .error(function (e) {
+
+                });
+
+        $http({
+            method: 'GET',
+            async: true,
+            url: '/Student/StudentInfo/GetRelationType'
+        })
+                .success(function (data) {
+                    $scope.RelationTypes = data;
                 })
                 .error(function (e) {
 
@@ -228,3 +397,10 @@ $('#closeUpdateAddStudent').click(function () {
 $('#closeSuccessUpdateAddStudent').click(function () {
     $('#alertSuccessUpdateAddStudent').hide();
 })
+
+$(function () {
+    $("#dob").datepicker({
+        changeMonth: true,
+        changeYear: true
+    });
+});

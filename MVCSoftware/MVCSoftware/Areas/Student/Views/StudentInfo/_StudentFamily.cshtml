@@ -1,55 +1,117 @@
-﻿<form name="familyform" class="form-horizontal" novalidate>
-    <div class="form-group">
-        <label class="control-label col-xs-3" for="inputFirstName">Student Name:</label>
-        <div class="col-xs-9">
-            <input type="text" ng-model="name" name="name" id="name" placeholder="Student Name" required class="form-control">
-            <span ng-show="familyform.name.$dirty && familyform.name.$error.required" class="help-block">Please enter Name</span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-3" for="ddrelationtype">Relation Type:</label>
-        <div class="col-xs-3">
-            <select class="form-control">
-                <option>Relation Type</option>
-            </select>
-        </div>
-        <span ng-show="familyform.ddrelationtype.$dirty && familyform.ddrelationtype.$error.required" class="help-block">Please select relation type</span>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-3" for="inputFirstName">Family Name:</label>
-        <div class="col-xs-9">
-            <input type="text" ng-model="familyname" name="familyname" id="familyname" placeholder="Family Name" required class="form-control">
-            <span ng-show="familyform.familyname.$dirty && familyform.familyname.$error.required" class="help-block">Please enter family name</span>
-        </div>
-    </div>
+﻿<style type="text/css">
+    .loading-container {
+        position: relative;
+    }
 
-    <div class="form-group">
-        <label class="control-label col-xs-3" for="phoneNumber">Phone Number:</label>
-        <div class="col-xs-9">
-            <input type="text" ng-model="phonenumber" name="phonenumber" id="phonenumber" placeholder="Phone Number" required class="form-control">
-            <span ng-show="familyform.phonenumber.$dirty && familyform.phonenumber.$error.required" class="help-block">Please enter Phone Number</span>
+        .loading-container .loading:before, .loading-container .loading:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            min-height: 50px;
+            min-width: 50px;
+        }
+
+        .loading-container .loading:before {
+            background-color: white;
+            opacity: 0.5;
+        }
+</style>
+
+<a href="" class="glyphicon glyphicon-plus pull-left" style="margin-bottom: 10px;" title="Add New" ng-click="StudentFamilyEdit()"></a>
+@*<button ng-click="tableParams.reload()" class="btn pull-right">Reload</button>
+<button ng-click="tableParams.sorting({})" class="btn pull-right">Clear sorting</button>*@
+<div class="clearfix"></div>
+
+<div loading-container="tableParamsFamily.settings().$loading">
+    <table ng-table="tableParamsFamily" show-filter="true" class="table table-bordered table-striped">
+        <tr ng-repeat="userFamily in $data">
+            <td data-title="'Student Name'" filter="{ 'Student_Name': 'text' }" sortable="'Student_Name'" sort-indicator="'span'">{{userFamily.Student_Name}} 
+                <a title="Edit" studentid="{{userFamily.Student_Id}}" class="glyphicon glyphicon-edit" href="javascript:void(0);" style="cursor: pointer;" ng-click="StudentFamilyEdit(this)"></a>
+            </td>
+            <td data-title="'RelationType'" sortable="'RelationType'">{{userFamily.RelationType}}
+            </td>
+            <td data-title="'FamilyName'" sortable="'FamilyName'">{{userFamily.FamilyName}}
+            </td>
+            <td data-title="'Phone'">{{userFamily.Phone}}
+            </td>
+            <td data-title="'Gender'" sortable="'Gender'">{{userFamily.Gender}}
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="modal fade" id="myFamilyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form name="familyform" class="form-horizontal" novalidate>
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="ModalFamily">Add/Edit Student Family</h4>
+                </div>
+
+                <div id="errorFam" class="alert alert-danger hidden" role="alert">
+                    <strong>Error!</strong> Data not saved.
+                </div>
+                <div id="successFam" class="alert alert-success hidden" role="alert">
+                    <strong>Well done!</strong> Data saved.
+                </div>
+                <div class="modal-body">
+                <div class="form-group">
+                    <label class="control-label col-xs-3" for="inputFirstName">Student Name:</label>
+                    <div class="col-xs-9">
+                        <input type="text" ng-model="userFamily.Student_Name" name="nameFamily" id="nameFamily" placeholder="Student Name" required class="form-control">
+                        <span ng-show="familyform.nameFamily.$dirty && familyform.nameFamily.$error.required" class="help-block">Please enter Name</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-3" for="ddrelationtype">Relation Type:</label>
+                    <div class="col-xs-5">
+                        <select class="form-control" ng-model="userFamily.RelationType_Id" ng-options="RelationType.RelationType_Id as RelationType.Relation_Name for RelationType in RelationTypes">
+                            <option value="">-- please select relation type --</option>
+                        </select>
+                    </div>
+                    <span ng-show="familyform.ddrelationtype.$dirty && familyform.ddrelationtype.$error.required" class="help-block">Please select relation type</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-3" for="inputFirstName">Family Name:</label>
+                    <div class="col-xs-9">
+                        <input type="text" ng-model="userFamily.FamilyName" name="familyname" id="familyname" placeholder="Family Name" required class="form-control">
+                        <span ng-show="familyform.familyname.$dirty && familyform.familyname.$error.required" class="help-block">Please enter family name</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-xs-3" for="phoneNumber">Phone Number:</label>
+                    <div class="col-xs-9">
+                        <input type="text" ng-model="userFamily.Phone" name="phonenumber" id="phonenumber" placeholder="Phone Number" required class="form-control">
+                        <span ng-show="familyform.phonenumber.$dirty && familyform.phonenumber.$error.required" class="help-block">Please enter Phone Number</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-3">Gender:</label>
+                    <div class="col-xs-2">
+                        <label class="radio-inline">
+                            <input type="radio" name="genderRadios" ng-model="userFamily.Gender_Id" value="1">
+                            Male
+                        </label>
+                    </div>
+                    <div class="col-xs-2">
+                        <label class="radio-inline">
+                            <input type="radio" name="genderRadios" ng-model="userFamily.Gender_Id" value="2">
+                            Female
+                        </label>
+                    </div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                        <input type="submit" value="Submit" ng-click='UpdateAddStudentFamily()' ng-disabled="familyform.$invalid" class="btn btn-primary btn-sm">
+                </div>
+            </form>
         </div>
     </div>
-    <div class="form-group">
-        <label class="control-label col-xs-3">Gender:</label>
-        <div class="col-xs-2">
-            <label class="radio-inline">
-                <input type="radio" name="genderRadios" value="male">
-                Male
-            </label>
-        </div>
-        <div class="col-xs-2">
-            <label class="radio-inline">
-                <input type="radio" name="genderRadios" value="female">
-                Female
-            </label>
-        </div>
-    </div>
-    <br>
-    <div class="form-group">
-        <div class="col-xs-offset-3 col-xs-9">
-            <input type="submit" value="Submit" ng-click='LoginSubmit()' ng-disabled="familyform.$invalid" class="btn btn-primary">
-            <input type="reset" class="btn btn-default" value="Reset">
-        </div>
-    </div>
-</form>
+</div>
